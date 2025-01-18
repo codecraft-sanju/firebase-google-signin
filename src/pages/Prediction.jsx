@@ -1,4 +1,4 @@
-
+// src/pages/Prediction.jsx
 import React, { useState } from 'react';
 
 const Prediction = () => {
@@ -9,7 +9,7 @@ const Prediction = () => {
 
   const handlePrediction = (eventId, choice) => {
     alert(`Prediction submitted: Event ${eventId}, Choice: ${choice}`);
-    // Save the prediction to the database
+    // Save the prediction to Firebase Firestore
   };
 
   return (

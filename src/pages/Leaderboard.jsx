@@ -1,11 +1,11 @@
-
+// src/pages/Leaderboard.jsx
 import React from 'react';
 
 const Leaderboard = () => {
   const leaderboard = [
-    { name: 'User1', points: 120 },
-    { name: 'User2', points: 100 },
-    { name: 'User3', points: 90 },
+    { name: 'Alice', points: 120 },
+    { name: 'Bob', points: 100 },
+    { name: 'Charlie', points: 90 },
   ];
 
   return (

@@ -1,16 +1,30 @@
-
-import React from 'react';
+// src/components/Auth.jsx
+import React, { useEffect } from 'react';
 import { auth } from '../services/firebase';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
 const Auth = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        // If user is logged in, redirect to dashboard
+        navigate('/dashboard');
+      }
+    });
+
+    return () => unsubscribe(); // Cleanup listener on unmount
+  }, [navigate]);
+
   const handleLogin = async () => {
     const provider = new GoogleAuthProvider();
     try {
       await signInWithPopup(auth, provider);
-      alert('Logged in successfully!');
+      navigate('/dashboard');
     } catch (error) {
-      console.error(error);
+      console.error('Error signing in:', error);
     }
   };
 
